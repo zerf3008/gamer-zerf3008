@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Règlement</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px 30px;
+            position: relative;
+        }
+
+        /* Menu 3 traits (hamburger) en haut à gauche */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            color: white;
+            user-select: none;
+        }
+
+        /* Panneau latéral (menu déroulant) */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 220px;
+            height: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Panneau ouvert */
+        .side-panel.open {
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Bouton fermeture (croix rouge) */
+        .close-btn {
+            font-size: 24px;
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            display: none;
+        }
+
+        /* Afficher la croix seulement si menu ouvert */
+        .side-panel.open .close-btn {
+            display: block;
+        }
+
+        /* Liens du menu */
+        .side-panel h2 a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .side-panel h2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Titre en haut */
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 30px;
+        }
+
+        /* Bulle gris presque noir */
+        .bubble {
+            background-color: #121212;
+            border-radius: 15px;
+            padding: 20px 25px;
+            color: white;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.5;
+            white-space: pre-line; /* pour garder les sauts de ligne */
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Icone menu -->
+    <div id="menuIcon" class="menu-icon" onclick="openMenu()">☰</div>
+
+    <!-- Panneau latéral -->
+    <div id="sidePanel" class="side-panel">
+        <div class="close-btn" onclick="closeMenu()">✕</div>
+        <h2><a id="linkMain" href="index.html">Page principale</a></h2> <!-- Modifié ici -->
+        <h2><a id="linkDiscorde" href="discorde.html">Discorde</a></h2>
+        <h2><a id="linkReglement" href="reglement.html">Règlement</a></h2>
+    </div>
+
+    <h1>Règlement!!!!!</h1>
+
+    <div class="bubble">
+Règlement du site Zerf3008
+
+Bienvenue sur le site officiel de Zerf3008 ! Pour que tout le monde passe un bon moment en regardant les vidéos et en participant aux lives, merci de respecter ce règlement.
+
+1. Respect et bienveillance
+
+    Soyez toujours poli et respectueux envers Zerf3008 et tous les visiteurs.
+
+    Aucun propos insultant, discriminatoire, raciste, sexiste, homophobe ou haineux ne sera toléré.
+
+    Le harcèlement ou l’intimidation sont interdits.
+
+2. Contenus et commentaires
+
+    Les commentaires doivent être respectueux et en lien avec les vidéos ou les lives.
+
+    Les spams, publicités non autorisées, liens douteux ou contenus inappropriés seront supprimés.
+
+    Toute incitation à la violence, à la haine ou à des actes illégaux est interdite.
+
+3. Confidentialité
+
+    Ne partagez pas vos informations personnelles dans les commentaires ou le chat.
+
+    Le site peut collecter des données pour améliorer l’expérience utilisateur, dans le respect de la loi.
+
+4. Lives
+
+    Respectez les consignes données par Zerf3008 ou les modérateurs pendant les lives.
+
+    Les comportements perturbateurs peuvent entraîner un bannissement temporaire ou définitif.
+
+5. Propriété des contenus
+
+    Les vidéos et contenus appartiennent à Zerf3008.
+
+    Il est interdit de copier, redistribuer ou utiliser ces contenus sans autorisation.
+
+6. Sanctions
+
+    Toute infraction au règlement peut entraîner la suppression de commentaires ou un bannissement.
+
+    Des actions légales peuvent être engagées en cas de comportements graves.
+
+Merci à tous pour votre soutien et votre respect !
+    </div>
+
+    <script>
+        const menuIcon = document.getElementById("menuIcon");
+        const sidePanel = document.getElementById("sidePanel");
+
+        function openMenu() {
+            sidePanel.classList.add("open");
+            menuIcon.style.display = "none";
+        }
+
+        function closeMenu() {
+            sidePanel.classList.remove("open");
+            menuIcon.style.display = "block";
+        }
+
+        // Désactive le lien "Règlement" quand on est sur reglement.html
+        window.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname.split("/").pop();
+            if(path === "reglement.html") {
+                const reglementLink = document.getElementById("linkReglement");
+                if(reglementLink){
+                    reglementLink.style.pointerEvents = "none";
+                    reglementLink.style.color = "gray";
+                    reglementLink.style.textDecoration = "none";
+                    reglementLink.style.cursor = "default";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

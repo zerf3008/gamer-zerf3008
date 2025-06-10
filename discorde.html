@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Discorde</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            padding-top: 50px;
+        }
+
+        /* Menu 3 traits (hamburger) en haut à gauche */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            color: white;
+            user-select: none;
+        }
+
+        /* Panneau latéral (menu déroulant) */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 220px;
+            height: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Panneau ouvert */
+        .side-panel.open {
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Bouton fermeture (croix rouge) */
+        .close-btn {
+            font-size: 24px;
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            display: none;
+        }
+
+        /* Afficher la croix seulement si menu ouvert */
+        .side-panel.open .close-btn {
+            display: block;
+        }
+
+        /* Liens du menu */
+        .side-panel h2 a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .side-panel h2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenu */
+        .content {
+            max-width: 600px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        a.discord-link {
+            color: #7289da;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+        a.discord-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Icone menu -->
+    <div id="menuIcon" class="menu-icon" onclick="openMenu()">☰</div>
+
+    <!-- Panneau latéral -->
+    <div id="sidePanel" class="side-panel">
+        <div class="close-btn" onclick="closeMenu()">✕</div>
+        <h2><a id="linkMain" href="index.html">Page principale</a></h2> <!-- Changement ici -->
+        <h2><a id="linkDiscorde" href="discorde.html">Discorde</a></h2>
+        <h2><a id="linkReglement" href="reglement.html">Règlement</a></h2>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <p>Lien du Discord :</p>
+        <p><a class="discord-link" href="https://discord.gg/8NewCxZ9" target="_blank" rel="noopener noreferrer">https://discord.gg/8NewCxZ9</a></p>
+    </div>
+
+    <script>
+        const menuIcon = document.getElementById("menuIcon");
+        const sidePanel = document.getElementById("sidePanel");
+
+        function openMenu() {
+            sidePanel.classList.add("open");
+            menuIcon.style.display = "none";
+        }
+
+        function closeMenu() {
+            sidePanel.classList.remove("open");
+            menuIcon.style.display = "block";
+        }
+
+        // Désactive le lien "Discorde" quand on est sur discorde.html
+        window.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname.split("/").pop();
+            if(path === "discorde.html") {
+                const discordLink = document.getElementById("linkDiscorde");
+                if(discordLink){
+                    discordLink.style.pointerEvents = "none";
+                    discordLink.style.color = "gray";
+                    discordLink.style.textDecoration = "none";
+                    discordLink.style.cursor = "default";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

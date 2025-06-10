@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio-Execute - Page d'Accueil</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            padding-top: 50px;
+        }
+
+        /* Menu 3 traits (hamburger) en haut à gauche */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            color: white;
+            user-select: none;
+        }
+
+        /* Panneau latéral (menu déroulant) */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 220px;
+            height: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Panneau ouvert */
+        .side-panel.open {
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Bouton fermeture (croix rouge) */
+        .close-btn {
+            font-size: 24px;
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            display: none;
+        }
+
+        /* Afficher la croix seulement si menu ouvert */
+        .side-panel.open .close-btn {
+            display: block;
+        }
+
+        /* Liens du menu */
+        .side-panel h2 a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .side-panel h2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Menu actif sur la page d'accueil */
+        .active-link {
+            color: gray !important; /* Ajout du !important pour forcer la couleur grise */
+            pointer-events: none; /* Désactive les clics sur ce lien */
+            cursor: default; /* Change le curseur pour indiquer qu'il est inactif */
+        }
+
+        /* Image centrée */
+        .centered-image {
+            max-width: 100%;
+            max-height: 80%; /* Limite la hauteur de l'image pour qu'elle reste bien visible */
+            margin-top: 30px; /* Pour éviter que l'image touche directement le menu */
+        }
+
+        /* Encadré rouge avec texte blanc */
+        .founder-box {
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Texte Bienvenue!!!! en rouge */
+        .welcome-text {
+            color: red;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Section des chaînes centrée */
+        .social-links {
+            position: absolute;
+            top: 50%; /* Centre verticalement */
+            left: 50%; /* Centre horizontalement */
+            transform: translate(-50%, -50%); /* Permet le centrage exact */
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Style des encadrés individuels */
+        .social-link-container {
+            background-color: #2c2c2c; /* Gris très foncé */
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Liens dans les encadrés */
+        .social-link {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .social-link a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lien vers Twitch en violet */
+        .twitch-link {
+            color: violet;
+        }
+
+        /* Lien vers YouTube en rouge */
+        .youtube-link {
+            color: red;
+        }
+
+        /* Lien vers TikTok en gris */
+        .tiktok-link {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Icone menu -->
+    <div id="menuIcon" class="menu-icon" onclick="openMenu()">☰</div>
+
+    <!-- Panneau latéral -->
+    <div id="sidePanel" class="side-panel">
+        <div class="close-btn" onclick="closeMenu()">✕</div>
+        <h2><a id="linkMain" href="index.html" class="active-link">Page d'Accueil</a></h2> <!-- Ajout de la classe active-link ici -->
+        <h2><a id="linkDiscorde" href="discorde.html">Discorde</a></h2>
+        <h2><a id="linkReglement" href="reglement.html">Règlement</a></h2>
+    </div>
+
+    <!-- Image centrée -->
+    <img src="zerf.png" alt="Image Zerf" class="centered-image" />
+
+    <!-- Encadré "Fondateur" sous l'image -->
+    <div class="founder-box">Fondateur</div>
+
+    <!-- Texte "Bienvenue!!!!" en rouge -->
+    <div class="welcome-text">Bienvenue!!!!</div>
+
+    <!-- Section des liens vers les réseaux sociaux centrée -->
+    <div class="social-links">
+        <!-- Encadré pour Twitch -->
+        <div class="social-link-container">
+            <div class="social-link">
+                <a href="https://www.twitch.tv/zerf3008ytb" class="twitch-link" target="_blank">Twitch</a>
+            </div>
+        </div>
+        
+        <!-- Encadré pour YouTube -->
+        <div class="social-link-container">
+            <div class="social-link">
+                <a href="https://www.youtube.com/channel/UCID2EH8K6h5cESe3Wak_0VA" class="youtube-link" target="_blank">YouTube</a>
+            </div>
+        </div>
+
+        <!-- Encadré pour TikTok -->
+        <div class="social-link-container">
+            <div class="social-link">
+                <a href="https://www.tiktok.com/@zerf30008?_t=ZN-8uBiqfQNlVG&_r=1" class="tiktok-link" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuIcon = document.getElementById("menuIcon");
+        const sidePanel = document.getElementById("sidePanel");
+
+        function openMenu() {
+            sidePanel.classList.add("open");
+            menuIcon.style.display = "none";
+        }
+
+        function closeMenu() {
+            sidePanel.classList.remove("open");
+            menuIcon.style.display = "block";
+        }
+    </script>
+</body>
+</html>
