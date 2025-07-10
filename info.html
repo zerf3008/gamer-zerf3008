@@ -9,8 +9,8 @@
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh;
             padding-top: 50px;
+            height: 100vh;
             position: relative;
         }
 
@@ -27,7 +27,7 @@
             user-select: none;
         }
 
-        /* Panneau latéral */
+        /* Menu latéral */
         .side-panel {
             position: fixed;
             top: 0;
@@ -73,26 +73,28 @@
             text-decoration: underline;
         }
 
-        /* Images en haut à gauche et à droite */
+        /* Images coins */
         .corner-image {
             position: absolute;
-            top: 10px;
-            width: 100px;
+            top: 20px;
+            width: 180px;
             height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .corner-left {
-            left: 60px; /* évite le menu hamburger */
+            left: 70px;
         }
 
         .corner-right {
             right: 20px;
         }
 
-        /* Contenu principal */
+        /* Contenu */
         .content {
             max-width: 800px;
-            margin: 100px auto;
+            margin: 220px auto 40px auto;
             padding: 20px;
             background-color: #121212;
             border-radius: 15px;
@@ -109,10 +111,10 @@
     </style>
 </head>
 <body>
-    <!-- Menu hamburger -->
+    <!-- Menu -->
     <div id="menuIcon" class="menu-icon" onclick="openMenu()">☰</div>
 
-    <!-- Panneau latéral -->
+    <!-- Panneau -->
     <div id="sidePanel" class="side-panel">
         <div class="close-btn" onclick="closeMenu()">✕</div>
         <h2><a id="linkMain" href="index.html">Page principale</a></h2>
@@ -121,9 +123,9 @@
         <h2><a id="linkInfo" href="info.html">À propos de moi</a></h2>
     </div>
 
-    <!-- Images dans les coins -->
-    <img src="image-gauche.png" alt="Image gauche" class="corner-image corner-left" />
-    <img src="image-droite.png" alt="Image droite" class="corner-image corner-right" />
+    <!-- Images -->
+    <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_222043.jpg" alt="Image gauche" class="corner-image corner-left" />
+    <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_223054.jpg" alt="Image droite" class="corner-image corner-right" />
 
     <!-- Contenu principal -->
     <div class="content">
@@ -147,7 +149,7 @@
             menuIcon.style.display = "block";
         }
 
-        // Désactiver lien actif
+        // Lien actif désactivé
         window.addEventListener('DOMContentLoaded', () => {
             const path = window.location.pathname.split("/").pop();
             const pages = {
