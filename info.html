@@ -77,24 +77,24 @@
         .corner-image {
             position: absolute;
             top: 20px;
-            width: 180px;
+            width: 300px;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
         }
 
         .corner-left {
-            left: 70px;
+            left: 90px;
         }
 
         .corner-right {
-            right: 20px;
+            right: 30px;
         }
 
         /* Contenu */
         .content {
             max-width: 800px;
-            margin: 220px auto 40px auto;
+            margin: 350px auto 40px auto;
             padding: 20px;
             background-color: #121212;
             border-radius: 15px;
@@ -107,6 +107,24 @@
         h1 {
             color: red;
             margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .corner-image {
+                width: 180px;
+            }
+
+            .corner-left {
+                left: 60px;
+            }
+
+            .corner-right {
+                right: 10px;
+            }
+
+            .content {
+                margin-top: 250px;
+            }
         }
     </style>
 </head>
