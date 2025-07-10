@@ -10,8 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding-top: 50px;
-            height: 100vh;
-            position: relative;
+            min-height: 100vh;
         }
 
         /* Menu hamburger */
@@ -73,28 +72,26 @@
             text-decoration: underline;
         }
 
-        /* Images coins */
-        .corner-image {
-            position: absolute;
-            top: 20px;
-            width: 300px;
+        /* Conteneur images centrées */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 100px;
+        }
+
+        .image-gallery img {
+            max-width: 90%;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
-        .corner-left {
-            left: 90px;
-        }
-
-        .corner-right {
-            right: 30px;
-        }
-
-        /* Contenu */
+        /* Contenu principal */
         .content {
             max-width: 800px;
-            margin: 350px auto 40px auto;
+            margin: 40px auto;
             padding: 20px;
             background-color: #121212;
             border-radius: 15px;
@@ -110,20 +107,9 @@
         }
 
         @media (max-width: 768px) {
-            .corner-image {
-                width: 180px;
-            }
-
-            .corner-left {
-                left: 60px;
-            }
-
-            .corner-right {
-                right: 10px;
-            }
-
-            .content {
-                margin-top: 250px;
+            .image-gallery {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -141,9 +127,11 @@
         <h2><a id="linkInfo" href="info.html">À propos de moi</a></h2>
     </div>
 
-    <!-- Images -->
-    <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_222043.jpg" alt="Image gauche" class="corner-image corner-left" />
-    <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_223054.jpg" alt="Image droite" class="corner-image corner-right" />
+    <!-- Images centrées -->
+    <div class="image-gallery">
+        <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_222043.jpg" alt="Photo Zerf 1">
+        <img src="https://raw.githubusercontent.com/zerf3008/gamer-zerf3008/main/IMG_20250620_223054.jpg" alt="Photo Zerf 2">
+    </div>
 
     <!-- Contenu principal -->
     <div class="content">
