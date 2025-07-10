@@ -105,7 +105,7 @@
         <h2><a id="linkMain" href="index.html">Page principale</a></h2>
         <h2><a id="linkDiscorde" href="discorde.html">Discorde</a></h2>
         <h2><a id="linkReglement" href="reglement.html">Règlement</a></h2>
-        <h2><a id="linkInfo" href="info.html">À propos de moi</a></h2> <!-- ✅ Ajouté ici -->
+        <h2><a id="linkInfo" href="info.html">À propos de moi</a></h2> <!-- ✅ Ajouté -->
     </div>
 
     <!-- Contenu principal -->
@@ -128,16 +128,23 @@
             menuIcon.style.display = "block";
         }
 
-        // Désactive le lien "Discorde" quand on est sur discorde.html
+        // Désactiver le lien vers la page active
         window.addEventListener('DOMContentLoaded', () => {
             const path = window.location.pathname.split("/").pop();
-            if(path === "discorde.html") {
-                const discordLink = document.getElementById("linkDiscorde");
-                if(discordLink){
-                    discordLink.style.pointerEvents = "none";
-                    discordLink.style.color = "gray";
-                    discordLink.style.textDecoration = "none";
-                    discordLink.style.cursor = "default";
+            const pages = {
+                "discorde.html": "linkDiscorde",
+                "index.html": "linkMain",
+                "reglement.html": "linkReglement",
+                "info.html": "linkInfo"
+            };
+            const currentLinkId = pages[path];
+            if (currentLinkId) {
+                const link = document.getElementById(currentLinkId);
+                if (link) {
+                    link.style.pointerEvents = "none";
+                    link.style.color = "gray";
+                    link.style.textDecoration = "none";
+                    link.style.cursor = "default";
                 }
             }
         });
