@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>À propos de moi</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            padding-top: 50px;
+            position: relative;
+        }
+
+        /* Menu hamburger */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            color: white;
+            user-select: none;
+        }
+
+        /* Panneau latéral */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 220px;
+            height: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .side-panel.open {
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            display: none;
+        }
+
+        .side-panel.open .close-btn {
+            display: block;
+        }
+
+        .side-panel h2 a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .side-panel h2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Images en haut à gauche et à droite */
+        .corner-image {
+            position: absolute;
+            top: 10px;
+            width: 100px;
+            height: auto;
+        }
+
+        .corner-left {
+            left: 60px; /* évite le menu hamburger */
+        }
+
+        .corner-right {
+            right: 20px;
+        }
+
+        /* Contenu principal */
+        .content {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #121212;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu hamburger -->
+    <div id="menuIcon" class="menu-icon" onclick="openMenu()">☰</div>
+
+    <!-- Panneau latéral -->
+    <div id="sidePanel" class="side-panel">
+        <div class="close-btn" onclick="closeMenu()">✕</div>
+        <h2><a id="linkMain" href="index.html">Page principale</a></h2>
+        <h2><a id="linkDiscorde" href="discorde.html">Discorde</a></h2>
+        <h2><a id="linkReglement" href="reglement.html">Règlement</a></h2>
+        <h2><a id="linkInfo" href="info.html">À propos de moi</a></h2>
+    </div>
+
+    <!-- Images dans les coins -->
+    <img src="image-gauche.png" alt="Image gauche" class="corner-image corner-left" />
+    <img src="image-droite.png" alt="Image droite" class="corner-image corner-right" />
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>À propos de moi</h1>
+        <p>Salut ! Je suis Zerf3008, créateur de contenu passionné par le divertissement, le fun et les communautés dynamiques.</p>
+        <p>Sur ce site, tu trouveras des liens vers mes lives, mes vidéos, mon serveur Discord et tout ce qui touche à mon univers.</p>
+        <p>Merci à toi de faire partie de l'aventure ! 💖</p>
+    </div>
+
+    <script>
+        const menuIcon = document.getElementById("menuIcon");
+        const sidePanel = document.getElementById("sidePanel");
+
+        function openMenu() {
+            sidePanel.classList.add("open");
+            menuIcon.style.display = "none";
+        }
+
+        function closeMenu() {
+            sidePanel.classList.remove("open");
+            menuIcon.style.display = "block";
+        }
+
+        // Désactiver lien actif
+        window.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname.split("/").pop();
+            const pages = {
+                "index.html": "linkMain",
+                "discorde.html": "linkDiscorde",
+                "reglement.html": "linkReglement",
+                "info.html": "linkInfo"
+            };
+            const currentLinkId = pages[path];
+            if (currentLinkId) {
+                const link = document.getElementById(currentLinkId);
+                if (link) {
+                    link.style.pointerEvents = "none";
+                    link.style.color = "gray";
+                    link.style.textDecoration = "none";
+                    link.style.cursor = "default";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
